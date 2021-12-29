@@ -17,6 +17,4 @@ class BookModel : ObservableObject {
         self.books = DataService().getLocalData()
         
     }
-    
-    
 }

@@ -11,7 +11,7 @@ class DataService {
     
     func getLocalData() -> [Book] {
         
-        let pathString = Bundle.main.path(forResource: "Data", ofType: "json")
+        let pathString = Bundle.main.path(forResource: "books", ofType: "json")
         
         guard pathString != nil else {
             return [Book]()
@@ -26,8 +26,8 @@ class DataService {
             let decoder = JSONDecoder()
             
             do {
-                
                 let bookdata = try decoder.decode([Book].self, from: data)
+                
                 
                 return bookdata
                 
