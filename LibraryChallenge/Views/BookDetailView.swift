@@ -9,29 +9,33 @@ import SwiftUI
 
 struct BookDetailView: View {
     
-    var allcontent = ""
+    @EnvironmentObject var model:BookModel
+    var book:Book
     
-    init(content:[String]) {
-        
-        for index in (0..<content.count) {
-            if index == content.count-1 {
-                allcontent += content[index]
-            } else {
-                allcontent += content[index] + "\n"
-            }
-        }
-        
-    }
+    @State private var page = 0
     
     var body: some View {
-        Text(allcontent)
-            .padding()
+        TabView(selection: $page){
+
+            ForEach(book.content.indices){index in
+                VStack{
+                    Text(book.content[index]).tag(index)
+                    Spacer()
+                    Text("\(page+1)")
+                }.padding()
+            }
+            
+        }
+        .tabViewStyle(PageTabViewStyle())
+        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
+        .onAppear{page = book.currentPage}
+        .onChange(of: page, perform: {value in model.updatePage(forID: book.id, page: page)})
     }
 }
 
 struct BookDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let model = BookModel()
-        BookDetailView(content: model.books[0].content)
+        BookDetailView(book: model.books[0]).environmentObject(BookModel())
     }
 }

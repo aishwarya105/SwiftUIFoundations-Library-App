@@ -51,5 +51,6 @@ struct BookCardView_Previews: PreviewProvider {
     static var previews: some View {
         let model = BookModel()
         BookCardView(book: model.books[0])
+            .environmentObject(BookModel())
     }
 }

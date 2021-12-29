@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var model:BookModel
-    @State var isRatingViewShowing = false
     
     var body: some View {
         VStack{
