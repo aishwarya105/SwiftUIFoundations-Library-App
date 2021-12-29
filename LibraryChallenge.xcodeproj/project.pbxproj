@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F0CD014277C3F9600CF0FE5 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0CD013277C3F9600CF0FE5 /* BookDetailView.swift */; };
+		2F0CD032277C595100CF0FE5 /* BookCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0CD031277C595100CF0FE5 /* BookCardView.swift */; };
 		2FE2EF71277C26E90093CC0D /* LibraryChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE2EF70277C26E90093CC0D /* LibraryChallengeApp.swift */; };
 		2FE2EF73277C26E90093CC0D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE2EF72277C26E90093CC0D /* ContentView.swift */; };
 		2FE2EF75277C26EC0093CC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FE2EF74277C26EC0093CC0D /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		2F0CD013277C3F9600CF0FE5 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
+		2F0CD031277C595100CF0FE5 /* BookCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCardView.swift; sourceTree = "<group>"; };
 		2FE2EF6D277C26E90093CC0D /* LibraryChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LibraryChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FE2EF70277C26E90093CC0D /* LibraryChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryChallengeApp.swift; sourceTree = "<group>"; };
 		2FE2EF72277C26E90093CC0D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				2FE2EF72277C26E90093CC0D /* ContentView.swift */,
+				2F0CD031277C595100CF0FE5 /* BookCardView.swift */,
 				2FE2EF87277C30000093CC0D /* BookRatingView.swift */,
 				2F0CD013277C3F9600CF0FE5 /* BookDetailView.swift */,
 			);
@@ -201,6 +204,7 @@
 				2FE2EF73277C26E90093CC0D /* ContentView.swift in Sources */,
 				2FE2EF71277C26E90093CC0D /* LibraryChallengeApp.swift in Sources */,
 				2FE2EF81277C27660093CC0D /* Book.swift in Sources */,
+				2F0CD032277C595100CF0FE5 /* BookCardView.swift in Sources */,
 				2FE2EF83277C27E00093CC0D /* DataService.swift in Sources */,
 				2F0CD014277C3F9600CF0FE5 /* BookDetailView.swift in Sources */,
 			);
