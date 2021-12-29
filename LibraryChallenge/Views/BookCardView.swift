@@ -13,20 +13,23 @@ struct BookCardView: View {
         ZStack {
             Rectangle()
                 .foregroundColor(.white)
-                
-            VStack(alignment: .leading, spacing: 0){
+                .cornerRadius(20)
+            VStack( alignment: .leading,spacing: 0){
                 Text(book.title)
                     .font(Font.custom("Avenir Heavy", size: 28))
-                    .multilineTextAlignment(.leading)
-                    .padding(.leading, 30)
+                    .padding(.top, 30)
+                    .padding(.leading, 40)
+                    .foregroundColor(.black)
                 Text(book.author)
                     .font(Font.custom("Avenir", size: 18))
-                    .multilineTextAlignment(.leading)
-                    .padding(.leading, 30)
+                    .padding(.leading, 40)
+                    .foregroundColor(.black)
                 Image("cover\(book.id)")
                     .resizable()
-                    .scaledToFit()
-                    .padding(30)
+                    .clipped()
+                    .aspectRatio(contentMode: .fill)
+                    .padding(40)
+                    .padding(.top, 0)
                 
             }
             
@@ -36,6 +39,7 @@ struct BookCardView: View {
 
 struct BookCardView_Previews: PreviewProvider {
     static var previews: some View {
-        BookCardView(book: BookModel().books[0])
+        let model = BookModel()
+        BookCardView(book: model.books[0])
     }
 }

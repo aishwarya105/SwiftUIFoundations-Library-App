@@ -17,4 +17,13 @@ class BookModel : ObservableObject {
         self.books = DataService().getLocalData()
         
     }
+    
+    func updateFavorite(bookid: Int) {
+        //find the first index where book id = to the id being passed
+        if let index = books.firstIndex(where: {$0.id == bookid }) {
+            books[index].isFavourite.toggle()
+        }
+        
+        //toggle the favorite boolean for that book
+    }
 }

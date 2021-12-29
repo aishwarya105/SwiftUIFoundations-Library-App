@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BookRatingView: View {
     
-    
+    @EnvironmentObject var model:BookModel
     //TO DO :
     //make the star tappable and store the state for that book
     //left align the book title
@@ -29,26 +29,24 @@ struct BookRatingView: View {
                 .multilineTextAlignment(.center)
                 .font(Font.custom("Avenir", size: 24))
             
-            Button(action: {
-                self.isBookDetailViewShowing = true
-            }, label: {
-                Image("cover\(book.id)")
+            
+            NavigationLink(destination: {BookDetailView(content : book.content)}, label: {Image("cover\(book.id)")
                     .resizable()
                     .scaledToFit()
                     .padding(60)
             })
-                .sheet(isPresented: $isBookDetailViewShowing, content: {BookDetailView(content:book.content)})
-                .buttonStyle(PlainButtonStyle())
             
             
-            Text("Mark for later")
-            if starSelection {
-                Image(systemName: "star.fill")
-            } else {
-                Image(systemName: "star")
-            }
-            Spacer()
-            Text("Rate \(book.title)")
+            Text(book.isFavourite ? "Added to favorites": "Add to favorites")
+                .font(Font.custom("Avenir", size: 20))
+                        
+            Button(action: {model.updateFavorite(bookid: book.id)}, label: {
+                Image(systemName: book.isFavourite ? "star.fill": "star")
+            }).padding(.bottom, 50)
+                
+            
+            Text("Rate \"\(book.title)\"")
+                .font(Font.custom("Avenir", size: 20))
             Picker("", selection: $rating) {
                 Text("1").tag(1)
                 Text("2").tag(2)
@@ -58,7 +56,7 @@ struct BookRatingView: View {
             }.pickerStyle(.segmented)
                 .frame(width: 200)
             
-        }
+        }.onAppear{rating = book.rating}
     }
 }
 
@@ -67,5 +65,6 @@ struct BookRatingView_Previews: PreviewProvider {
         
         let model = BookModel()
         BookRatingView(book: model.books[0])
+            .environmentObject(BookModel())
     }
 }
