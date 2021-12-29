@@ -40,9 +40,10 @@ struct BookRatingView: View {
             Text(book.isFavourite ? "Added to favorites": "Add to favorites")
                 .font(Font.custom("Avenir", size: 20))
                         
-            Button(action: {model.updateFavorite(bookid: book.id)}, label: {
+            Button(action: {model.updateFavorite(forID: book.id)}, label: {
                 Image(systemName: book.isFavourite ? "star.fill": "star")
             }).padding(.bottom, 50)
+                .accentColor(.yellow)
                 
             
             Text("Rate \"\(book.title)\"")
@@ -57,14 +58,15 @@ struct BookRatingView: View {
                 .frame(width: 200)
             
         }.onAppear{rating = book.rating}
+
     }
 }
 
 struct BookRatingView_Previews: PreviewProvider {
     static var previews: some View {
         
-        let model = BookModel()
-        BookRatingView(book: model.books[0])
+//        let model = BookModel()
+        BookRatingView(book: Book())
             .environmentObject(BookModel())
     }
 }

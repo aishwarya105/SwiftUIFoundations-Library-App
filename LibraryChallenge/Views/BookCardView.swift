@@ -14,24 +14,34 @@ struct BookCardView: View {
             Rectangle()
                 .foregroundColor(.white)
                 .cornerRadius(20)
-            VStack( alignment: .leading,spacing: 0){
-                Text(book.title)
-                    .font(Font.custom("Avenir Heavy", size: 28))
-                    .padding(.top, 30)
-                    .padding(.leading, 40)
-                    .foregroundColor(.black)
+                .shadow(color: Color(.sRGB, red: 0, green: 0, blue: 0, opacity: 0.5), radius: 10, x: -5, y:5)
+            VStack( alignment: .leading,spacing: 10){
+                HStack {
+                    Text(book.title)
+                        .font(Font.custom("Avenir Heavy", size: 28))
+
+                        .foregroundColor(.black)
+                    Spacer()
+                    if book.isFavourite{
+                        Image(systemName: "star.fill")
+                            .resizable()
+                            .frame(width: 28, height: 28)
+                            .foregroundColor(.yellow)
+                        
+                    }
+                }
                 Text(book.author)
+                    .italic()
                     .font(Font.custom("Avenir", size: 18))
-                    .padding(.leading, 40)
                     .foregroundColor(.black)
+                    
                 Image("cover\(book.id)")
                     .resizable()
                     .clipped()
                     .aspectRatio(contentMode: .fill)
-                    .padding(40)
-                    .padding(.top, 0)
+
                 
-            }
+            }.padding()
             
         }
     }

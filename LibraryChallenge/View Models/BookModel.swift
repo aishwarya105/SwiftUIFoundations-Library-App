@@ -18,12 +18,11 @@ class BookModel : ObservableObject {
         
     }
     
-    func updateFavorite(bookid: Int) {
+    func updateFavorite(forID: Int) {
         //find the first index where book id = to the id being passed
-        if let index = books.firstIndex(where: {$0.id == bookid }) {
-            books[index].isFavourite.toggle()
-        }
-        
+        if let index = books.firstIndex(where: {$0.id == forID }) {
+        books[index].isFavourite.toggle()
         //toggle the favorite boolean for that book
     }
+}
 }
