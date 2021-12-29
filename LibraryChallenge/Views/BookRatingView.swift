@@ -58,6 +58,7 @@ struct BookRatingView: View {
                 .frame(width: 200)
             
         }.onAppear{rating = book.rating}
+        .onChange(of: rating, perform: {value in model.updateRating(forID: book.id, rating: rating)})
 
     }
 }
