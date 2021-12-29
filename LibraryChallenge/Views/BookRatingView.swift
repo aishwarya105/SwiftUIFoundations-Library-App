@@ -17,20 +17,30 @@ struct BookRatingView: View {
     
     @State var starSelection = false
     @State var rating = 1
+    @State var isBookDetailViewShowing = false
+    
     
     var body: some View {
         VStack{
             Text(book.title)
-                .multilineTextAlignment(.leading)
                 .font(Font.custom("Avenir Heavy", size: 28))
             Spacer()
             Text("Read now!")
-                .font(Font.custom("Avenir", size: 24))
                 .multilineTextAlignment(.center)
-            Image("cover\(book.id)")
-                .resizable()
-                .scaledToFit()
-                .padding(60)
+                .font(Font.custom("Avenir", size: 24))
+            
+            Button(action: {
+                self.isBookDetailViewShowing = true
+            }, label: {
+                Image("cover\(book.id)")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(60)
+            })
+                .sheet(isPresented: $isBookDetailViewShowing, content: {BookDetailView(content:book.content)})
+                .buttonStyle(PlainButtonStyle())
+            
+            
             Text("Mark for later")
             if starSelection {
                 Image(systemName: "star.fill")
